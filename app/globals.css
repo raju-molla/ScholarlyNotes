@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  background-color: #faf9f6;
+  color: #1b1f23;
+}
+
+.prose-note h1 { @apply text-3xl font-serif font-bold mt-6 mb-3; }
+.prose-note h2 { @apply text-2xl font-serif font-bold mt-5 mb-2; }
+.prose-note h3 { @apply text-xl font-serif font-semibold mt-4 mb-2; }
+.prose-note p { @apply mb-3 leading-relaxed; }
+.prose-note ul { @apply list-disc pl-6 mb-3; }
+.prose-note li { @apply mb-1; }
+.prose-note blockquote { @apply border-l-4 border-accent/40 pl-4 italic text-ink/80 mb-3; }
+.prose-note a { @apply text-accent underline underline-offset-2 hover:text-accent2; }
+
+@media print {
+  header, footer, .print\:hidden { display: none !important; }
+  body { background: white; }
+}
+
+/* Dark mode: broad overrides so the whole app is usable without adding
+   dark: variants to every single class across every component. */
+.dark { color-scheme: dark; }
+.dark html, .dark body { background-color: #14181a; color: #e8e6e1; }
+.dark .bg-paper, .dark .bg-paper\/95 { background-color: #14181a !important; }
+.dark .border-ink\/10, .dark .border-ink\/20 { border-color: rgba(232, 230, 225, 0.15) !important; }
+.dark .text-ink\/50, .dark .text-ink\/60, .dark .text-ink\/70, .dark .text-ink\/80 { color: rgba(232, 230, 225, 0.65) !important; }
+.dark .bg-ink\/5 { background-color: rgba(232, 230, 225, 0.08) !important; }
+.dark .bg-white { background-color: #1c2124 !important; }
+.dark input, .dark textarea, .dark select { background-color: #1c2124; color: #e8e6e1; border-color: rgba(232, 230, 225, 0.2); }
