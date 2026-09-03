@@ -27,6 +27,8 @@ html, body {
 .dark html, .dark body { background-color: #14181a; color: #e8e6e1; }
 .dark .bg-paper, .dark .bg-paper\/95 { background-color: #14181a !important; }
 .dark .border-ink\/10, .dark .border-ink\/20 { border-color: rgba(232, 230, 225, 0.15) !important; }
+.dark .text-ink\/20 { color: rgba(232, 230, 225, 0.30) !important; }
+.dark .text-ink\/40 { color: rgba(232, 230, 225, 0.50) !important; }
 .dark .text-ink\/50, .dark .text-ink\/60, .dark .text-ink\/70, .dark .text-ink\/80 { color: rgba(232, 230, 225, 0.65) !important; }
 .dark .bg-ink\/5 { background-color: rgba(232, 230, 225, 0.08) !important; }
 .dark .bg-white { background-color: #1c2124 !important; }
