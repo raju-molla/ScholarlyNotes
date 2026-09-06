@@ -1,12 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import OtpVerifyForm from "@/components/OtpVerifyForm";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [step, setStep] = useState("form"); // "form" | "verify"
   const [pendingEmail, setPendingEmail] = useState("");
   const [form, setForm] = useState({
@@ -46,7 +44,12 @@ export default function SignupPage() {
     return (
       <div className="max-w-md mx-auto px-4 py-16">
         <h1 className="font-serif text-2xl font-bold mb-6">Verify your email</h1>
-        <OtpVerifyForm email={pendingEmail} onVerified={() => router.push("/notes")} />
+        <OtpVerifyForm
+          email={pendingEmail}
+          // Hard navigation (see app/login/page.js): avoids serving a
+          // stale, pre-auth Router Cache entry for /notes.
+          onVerified={() => { window.location.href = "/notes"; }}
+        />
       </div>
     );
   }
@@ -98,3 +101,4 @@ function Field({ label, hint, ...props }) {
     </label>
   );
 }
+ 

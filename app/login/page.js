@@ -40,7 +40,12 @@ function LoginContent() {
       }
 
       await refresh();
-      router.push(searchParams.get("next") || "/notes");
+      // Hard navigation (not router.push) is intentional: Next's client
+      // Router Cache can be holding a stale "redirect to /login" response
+      // for the destination (e.g. from a prefetch that ran before this
+      // cookie existed). A full navigation bypasses that cache and lets
+      // middleware re-check the fresh auth cookie on the server.
+      window.location.href = searchParams.get("next") || "/notes";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed.");
     } finally {

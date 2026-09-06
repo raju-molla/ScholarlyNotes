@@ -1,11 +1,10 @@
 "use client";
 
 import { Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import OtpVerifyForm from "@/components/OtpVerifyForm";
 
 function VerifyEmailContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
 
@@ -32,7 +31,10 @@ function VerifyEmailContent() {
 
       <OtpVerifyForm
         email={email}
-        onVerified={() => router.push("/notes")}
+        // Hard navigation, same reasoning as the login page: avoids a
+        // stale Router Cache entry serving the old (unauthenticated)
+        // redirect for /notes right after the auth cookie is set.
+        onVerified={() => { window.location.href = "/notes"; }}
       />
     </div>
   );
